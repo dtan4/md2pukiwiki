@@ -42,6 +42,10 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("_italic_")).to eq "'''italic'''"
     end
 
+    it "should convert link" do
+      expect(Md2pukiwiki.convert("[link](http://link.com)")).to eq "[[link:http://link.com]]"
+    end
+
     it "should convert multi-line text" do
       markdown = <<-EOS.strip
 # header

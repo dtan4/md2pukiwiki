@@ -10,6 +10,7 @@ module Md2pukiwiki
       new_line = convert_numbered_list(new_line)
       new_line = convert_bold_characters(new_line)
       new_line = convert_italic_characters(new_line)
+      new_line = convert_link(new_line)
 
       new_line
     end.join("\n")
@@ -47,5 +48,9 @@ module Md2pukiwiki
 
   def self.convert_italic_characters(line)
     line.gsub(/(?:\*{1}|_{1})(?<italic>.+?)(?:\*{1}|_{1})/, "'''\\k<italic>'''")
+  end
+
+  def self.convert_link(line)
+    line.gsub(/\[(?<text>.+?)\]\((?<link>.+)\)/, '[[\k<text>:\k<link>]]')
   end
 end
