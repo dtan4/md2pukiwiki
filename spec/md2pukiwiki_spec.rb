@@ -30,6 +30,10 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("**bold**")).to eq "''bold''"
     end
 
+    it "should convert italic characters" do
+      expect(Md2pukiwiki.convert("*italic*")).to eq "'''italic'''"
+    end
+
     it "should convert multi-line text" do
       markdown = <<-EOS.strip
 # header
