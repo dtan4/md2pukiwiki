@@ -30,8 +30,16 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("**bold**")).to eq "''bold''"
     end
 
+    it "should convert underscore-notation bold characters" do
+      expect(Md2pukiwiki.convert("__bold__")).to eq "''bold''"
+    end
+
     it "should convert italic characters" do
       expect(Md2pukiwiki.convert("*italic*")).to eq "'''italic'''"
+    end
+
+    it "should convert underscore-notation italic characters" do
+      expect(Md2pukiwiki.convert("_italic_")).to eq "'''italic'''"
     end
 
     it "should convert multi-line text" do
