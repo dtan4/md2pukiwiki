@@ -26,6 +26,10 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("    1. list")).to eq "++ list"
     end
 
+    it "should convert bold characters" do
+      expect(Md2pukiwiki.convert("**bold**")).to eq "''bold''"
+    end
+
     it "should convert multi-line text" do
       markdown = <<-EOS.strip
 # header

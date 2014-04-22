@@ -8,6 +8,7 @@ module Md2pukiwiki
       new_line = convert_header(new_line)
       new_line = convert_list(new_line)
       new_line = convert_numbered_list(new_line)
+      new_line = convert_bold_characters(new_line)
 
       new_line
     end.join("\n")
@@ -37,5 +38,9 @@ module Md2pukiwiki
     else
       line
     end
+  end
+
+  def self.convert_bold_characters(line)
+    line.gsub(/\*\*(?<bold>.+)\*\*/, "''\\k<bold>''")
   end
 end
