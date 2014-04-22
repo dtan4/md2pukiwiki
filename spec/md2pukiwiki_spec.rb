@@ -9,5 +9,13 @@ describe Md2pukiwiki do
     it "should convert sub-header" do
       expect(Md2pukiwiki.convert("## header")).to eq "**header"
     end
+
+    it "should convert list" do
+      expect(Md2pukiwiki.convert("* list")).to eq "- list"
+    end
+
+    it "should convert numbered list" do
+      expect(Md2pukiwiki.convert("1. list")).to eq "+ list"
+    end
   end
 end
