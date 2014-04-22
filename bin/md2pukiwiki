@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require "md2pukiwiki"
+require "pathname"
+
+USAGE = "usage: md2pukiwiki <file>"
+
+if ARGV.length < 1
+  $stderr.puts USAGE
+  exit 1
+end
+
+filename = ARGV.shift
+
+unless File.exist?(filename)
+  $stderr.puts "file not found!: #{filename}"
+  exit 1
+end
+
+puts Md2pukiwiki.convert(open(filename).read)
