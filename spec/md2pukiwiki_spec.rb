@@ -47,7 +47,13 @@ describe Md2pukiwiki do
     end
 
     it "should convert image" do
-      expect(Md2pukiwiki.convert("![image](http://link.com/image.jpg)")).to eq "#ref(http://link.com/image.jpg,image)"
+      converted = Md2pukiwiki.convert("![image](http://link.com/image.jpg)")
+      expect(converted).to eq "#ref(http://link.com/image.jpg,image)"
+    end
+
+    it "should convert image link" do
+      converted = Md2pukiwiki.convert("[![ImageLink](http://link.com/image.jpg)](http://link.com/)")
+      expect(converted).to eq "[[#ref(http://link.com/image.jpg,ImageLink):http://link.com/]]"
     end
 
     it "should convert multi-line text" do

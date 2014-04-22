@@ -60,11 +60,11 @@ module Md2pukiwiki
 
   # "![text](image)" => "#ref(image,text)"
   def self.convert_image(line)
-    line.gsub(/!\[(?<text>.+?)\]\((?<image>.+)\)/, '#ref(\k<image>,\k<text>)')
+    line.gsub(/!\[(?<text>.+?)\]\((?<image>.+?)\)/, '#ref(\k<image>,\k<text>)')
   end
 
   # "[text](link)" => "[[text:link]]"
   def self.convert_link(line)
-    line.gsub(/\[(?<text>.+?)\]\((?<link>.+)\)/, '[[\k<text>:\k<link>]]')
+    line.gsub(/\[(?<text>.+?)\]\((?<link>.+?)\)/, '[[\k<text>:\k<link>]]')
   end
 end
