@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe Md2pukiwiki do
-  it 'has a version number' do
-    expect(Md2pukiwiki::VERSION).not_to be nil
-  end
+  describe "#convert" do
+    it "should convert header" do
+      expect(Md2pukiwiki.convert("# header")).to eq "*header"
+    end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+    it "should convert sub-header" do
+      expect(Md2pukiwiki.convert("## header")).to eq "**header"
+    end
   end
 end
