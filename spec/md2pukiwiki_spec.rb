@@ -38,24 +38,24 @@ describe Md2pukiwiki do
       markdown = <<-EOS.strip
 # header
 * list1
-* list2
+* l**is**t2
     * list2.1
 
 ## subheader
 1. nlist1
-2. nlist2
+2. nl*is*t2
     1. nlist2.1
       EOS
 
       pukiwiki = <<-EOS.strip
 *header
 - list1
-- list2
+- l''is''t2
 -- list2.1
 
 **subheader
 + nlist1
-+ nlist2
++ nl'''is'''t2
 ++ nlist2.1
       EOS
 

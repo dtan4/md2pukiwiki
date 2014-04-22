@@ -42,10 +42,10 @@ module Md2pukiwiki
   end
 
   def self.convert_bold_characters(line)
-    line.gsub(/\*\*(?<bold>.+)\*\*/, "''\\k<bold>''")
+    line.gsub(/\*{2}(?<bold>.+?)\*{2}/, "''\\k<bold>''")
   end
 
   def self.convert_italic_characters(line)
-    line.gsub(/\*(?<italic>.+)\*/, "'''\\k<italic>'''")
+    line.gsub(/\*{1}(?<italic>.+?)\*{1}/, "'''\\k<italic>'''")
   end
 end
