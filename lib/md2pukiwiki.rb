@@ -8,8 +8,11 @@ module Md2pukiwiki
       new_line = convert_header(new_line)
       new_line = convert_list(new_line)
       new_line = convert_numbered_list(new_line)
+
       new_line = convert_bold_characters(new_line)
       new_line = convert_italic_characters(new_line)
+
+      new_line = convert_image(new_line)
       new_line = convert_link(new_line)
 
       new_line
@@ -53,6 +56,11 @@ module Md2pukiwiki
   # "*italic*" => "'''italic'''"
   def self.convert_italic_characters(line)
     line.gsub(/(?:\*{1}|_{1})(?<italic>.+?)(?:\*{1}|_{1})/, "'''\\k<italic>'''")
+  end
+
+  # "![text](image)" => "#ref(image,text)"
+  def self.convert_image(line)
+    line.gsub(/!\[(?<text>.+?)\]\((?<image>.+)\)/, '#ref(\k<image>,\k<text>)')
   end
 
   # "[text](link)" => "[[text:link]]"

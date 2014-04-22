@@ -46,6 +46,10 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("[link](http://link.com)")).to eq "[[link:http://link.com]]"
     end
 
+    it "should convert image" do
+      expect(Md2pukiwiki.convert("![image](http://link.com/image.jpg)")).to eq "#ref(http://link.com/image.jpg,image)"
+    end
+
     it "should convert multi-line text" do
       markdown = <<-EOS.strip
 # header
