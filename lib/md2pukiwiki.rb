@@ -3,7 +3,7 @@ require "md2pukiwiki/version"
 module Md2pukiwiki
   def self.convert(text)
     text.lines.map do |line|
-      new_line = line.strip
+      new_line = line.chomp
 
       new_line = convert_header(new_line)
       new_line = convert_list(new_line)
@@ -24,16 +24,16 @@ module Md2pukiwiki
   end
 
   def self.convert_list(line)
-    if /\A(?<asterisks>\*+) (?<list>.+)\z/ =~ line
-      "#{'-' * asterisks.length} #{list}"
+    if /\A(?<spaces>\s*)\* (?<list>.+)\z/ =~ line
+      "#{'-' * (spaces.length / 4 + 1)} #{list}"
     else
       line
     end
   end
 
   def self.convert_numbered_list(line)
-    if /\A\d+\. (?<list>.+)\z/ =~ line
-      "+ #{list}"
+    if /\A(?<spaces>\s*)\d+\. (?<list>.+)\z/ =~ line
+      "#{'+' * (spaces.length / 4 + 1)} #{list}"
     else
       line
     end

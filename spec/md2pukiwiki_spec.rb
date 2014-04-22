@@ -14,8 +14,16 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("* list")).to eq "- list"
     end
 
+    it "should convert nested list" do
+      expect(Md2pukiwiki.convert("    * list")).to eq "-- list"
+    end
+
     it "should convert numbered list" do
       expect(Md2pukiwiki.convert("1. list")).to eq "+ list"
+    end
+
+    it "should convert nested numbered list" do
+      expect(Md2pukiwiki.convert("    1. list")).to eq "++ list"
     end
   end
 end
