@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Md2pukiwiki::VERSION
   spec.authors       = ["dtan4"]
   spec.email         = ["dtanshi45@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Convert Markdown to Pukiwiki-notation}
+  spec.description   = %q{Text converter from Markdown to Pukiwiki-notation}
+  spec.homepage      = "https://github.com/dtan4/md2pukiwiki"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
