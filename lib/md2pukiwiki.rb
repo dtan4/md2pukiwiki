@@ -9,8 +9,8 @@ module Md2pukiwiki
       new_line = convert_list(new_line)
       new_line = convert_numbered_list(new_line)
 
-      new_line = convert_bold_characters(new_line)
-      new_line = convert_italic_characters(new_line)
+      new_line = convert_bold_text(new_line)
+      new_line = convert_italic_text(new_line)
       new_line = convert_strikethrough_text(new_line)
 
       new_line = convert_image(new_line)
@@ -50,12 +50,12 @@ module Md2pukiwiki
   end
 
   # "**bold**" => "''bold''"
-  def self.convert_bold_characters(line)
+  def self.convert_bold_text(line)
     line.gsub(/(?:\*{2}|_{2})(?<bold>.+?)(?:\*{2}|_{2})/, "''\\k<bold>''")
   end
 
   # "*italic*" => "'''italic'''"
-  def self.convert_italic_characters(line)
+  def self.convert_italic_text(line)
     line.gsub(/(?:\*{1}|_{1})(?<italic>.+?)(?:\*{1}|_{1})/, "'''\\k<italic>'''")
   end
 

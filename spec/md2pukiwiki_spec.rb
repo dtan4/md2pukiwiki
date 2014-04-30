@@ -26,19 +26,19 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("    1. list")).to eq "++ list"
     end
 
-    it "should convert bold characters" do
+    it "should convert bold text" do
       expect(Md2pukiwiki.convert("**bold**")).to eq "''bold''"
     end
 
-    it "should convert underscore-notation bold characters" do
+    it "should convert underscore-notation bold text" do
       expect(Md2pukiwiki.convert("__bold__")).to eq "''bold''"
     end
 
-    it "should convert italic characters" do
+    it "should convert italic text" do
       expect(Md2pukiwiki.convert("*italic*")).to eq "'''italic'''"
     end
 
-    it "should convert underscore-notation italic characters" do
+    it "should convert underscore-notation italic text" do
       expect(Md2pukiwiki.convert("_italic_")).to eq "'''italic'''"
     end
 
