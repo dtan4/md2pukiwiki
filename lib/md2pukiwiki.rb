@@ -52,6 +52,7 @@ module Md2pukiwiki
     line.gsub(/(?:\*{1}|_{1})(?<italic>.+?)(?:\*{1}|_{1})/, "'''\\k<italic>'''")
   end
 
+  # "~~strikethrough~~" => "%%strikethrough%%"
   def self.convert_strikethrough(line)
     line.gsub(/~{2}(?<strikethrough>.+?)~{2}/, '%%\k<strikethrough>%%')
   end
