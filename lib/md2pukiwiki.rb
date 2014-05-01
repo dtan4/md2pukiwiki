@@ -5,7 +5,7 @@ module Md2pukiwiki
     text.lines.map do |line|
       new_line = line.chomp
 
-      %w{header list numbered_list bold_text italic_text strikethrough_text image link}.each do |method|
+      %w{header list numbered_list bold italic strikethrough image link}.each do |method|
         new_line = self.send("convert_#{method}", new_line)
       end
 
@@ -43,16 +43,16 @@ module Md2pukiwiki
   end
 
   # "**bold**" => "''bold''"
-  def self.convert_bold_text(line)
+  def self.convert_bold(line)
     line.gsub(/(?:\*{2}|_{2})(?<bold>.+?)(?:\*{2}|_{2})/, "''\\k<bold>''")
   end
 
   # "*italic*" => "'''italic'''"
-  def self.convert_italic_text(line)
+  def self.convert_italic(line)
     line.gsub(/(?:\*{1}|_{1})(?<italic>.+?)(?:\*{1}|_{1})/, "'''\\k<italic>'''")
   end
 
-  def self.convert_strikethrough_text(line)
+  def self.convert_strikethrough(line)
     line.gsub(/~{2}(?<strikethrough>.+?)~{2}/, '%%\k<strikethrough>%%')
   end
 
