@@ -5,8 +5,12 @@ module Md2pukiwiki
     text.lines.map do |line|
       new_line = line.chomp
 
-      %w{decorated prefixed special}.each do |type|
-        new_line = self.send("convert_#{type}_text", new_line)
+      prefixed_type = %w{header list numbered_list}
+      decorated_type = %w{bold italic strikethrough}
+      special_type = %w{image link}
+
+      [prefixed_type, decorated_type, special_type].flatten.each do |type|
+        new_line = self.send("convert_#{type}", new_line)
       end
 
       new_line
@@ -14,36 +18,6 @@ module Md2pukiwiki
   end
 
   private
-
-  def self.convert_prefixed_text(line)
-    new_line = line.chomp
-
-    %w{header list numbered_list}.each do |method|
-      new_line = self.send("convert_#{method}", new_line)
-    end
-
-    new_line
-  end
-
-  def self.convert_decorated_text(line)
-    new_line = line.chomp
-
-    %w{bold italic strikethrough}.each do |method|
-      new_line = self.send("convert_#{method}", new_line)
-    end
-
-    new_line
-  end
-
-  def self.convert_special_text(line)
-    new_line = line.chomp
-
-    %w{image link}.each do |method|
-      new_line = self.send("convert_#{method}", new_line)
-    end
-
-    new_line
-  end
 
   # "# header" => "*header"
   def self.convert_header(line)
