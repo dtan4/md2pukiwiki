@@ -5,16 +5,9 @@ module Md2pukiwiki
     text.lines.map do |line|
       new_line = line.chomp
 
-      new_line = convert_header(new_line)
-      new_line = convert_list(new_line)
-      new_line = convert_numbered_list(new_line)
-
-      new_line = convert_bold_text(new_line)
-      new_line = convert_italic_text(new_line)
-      new_line = convert_strikethrough_text(new_line)
-
-      new_line = convert_image(new_line)
-      new_line = convert_link(new_line)
+      %w{header list numbered_list bold_text italic_text strikethrough_text image link}.each do |method|
+        new_line = self.send("convert_#{method}", new_line)
+      end
 
       new_line
     end.join("\n")
