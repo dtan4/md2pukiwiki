@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/dtan4/md2pukiwiki.svg?branch=master)](https://travis-ci.org/dtan4/md2pukiwiki)
 [![Coverage Status](https://coveralls.io/repos/dtan4/md2pukiwiki/badge.png)](https://coveralls.io/r/dtan4/md2pukiwiki)
 [![Code Climate](https://codeclimate.com/github/dtan4/md2pukiwiki.png)](https://codeclimate.com/github/dtan4/md2pukiwiki)
+[![Gem Version](https://badge.fury.io/rb/md2pukiwiki.svg)](http://badge.fury.io/rb/md2pukiwiki)
 
 Convert Markdown to Pukiwiki-notation
 
