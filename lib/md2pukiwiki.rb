@@ -2,14 +2,14 @@ require "md2pukiwiki/version"
 
 module Md2pukiwiki
   def self.convert(text)
-    prefixed_type = %w{header list numbered_list}
     decorated_type = %w{bold italic strikethrough}
+    prefixed_type = %w{header list numbered_list}
     special_type = %w{image link}
 
     text.lines.map do |line|
       new_line = line.chomp
 
-      [prefixed_type, decorated_type, special_type].flatten.each do |type|
+      [decorated_type, prefixed_type, special_type].flatten.each do |type|
         new_line = self.send("convert_#{type}", new_line)
       end
 

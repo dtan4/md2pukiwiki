@@ -10,6 +10,10 @@ describe Md2pukiwiki do
       expect(Md2pukiwiki.convert("## header")).to eq "**header"
     end
 
+    it "should convert subsub-header" do
+      expect(Md2pukiwiki.convert("### header")).to eq "***header"
+    end
+
     it "should convert list" do
       expect(Md2pukiwiki.convert("* list")).to eq "- list"
     end
